@@ -14,21 +14,23 @@ class console():
     def command(self):
         while True:
             self.command_text = input()
+
             if self.command_text == "info":
                 p_responses.__info__(self.version, self.user)
             elif self.command_text == "exit":
                 break
 
-def start():
-    user = "user"
-    version = "v0.1-alpha"
-
-    console(user, version)
-
 try:
-    import prepared_responses as p_responses
+    print("> Start programm...")
 
-    print("Success!")
-    start()
+    import prepared_responses as p_responses
+    import user_options
+
+    user_options.check_user()
+    user = user_options.user_info()[0]
+    version = "v0.1-alpha"    
+
+    print("> Success start!")
+    console(user, version)
 except:
-    print("Error!")
+    print("> Error!")
